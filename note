@@ -1,0 +1,9 @@
+Why I need Entity ?
+    => it will hold my POJO classes
+
+Repository
+    => is for Database Access
+
+Service
+    => Business Logic
+

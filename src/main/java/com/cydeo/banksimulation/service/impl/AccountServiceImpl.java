@@ -1,7 +1,9 @@
 package com.cydeo.banksimulation.service.impl;
 
-import com.cydeo.banksimulation.entity.Account;
+
+import com.cydeo.banksimulation.enums.AccountStatus;
 import com.cydeo.banksimulation.enums.AccountType;
+import com.cydeo.banksimulation.model.Account;
 import com.cydeo.banksimulation.repository.AccountRepository;
 import com.cydeo.banksimulation.service.AccountService;
 import org.springframework.stereotype.Component;
@@ -21,14 +23,24 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account createNewAccount(BigDecimal balance, Date creationDate, AccountType accountType, long userId) {
+    public Account createNewAccount(BigDecimal balance, AccountStatus accountStatus, Date creationDate, AccountType accountType, long userId) {
         Account account = Account.builder().id(UUID.randomUUID())
-                .userId(userId).accountType(accountType).balance(balance).creationDate(creationDate).build();
+                .userId(userId).accountStatus(AccountStatus.ACTIVE).accountType(accountType).balance(balance).creationDate(creationDate).build();
         return accountRepository.save(account);
     }
 
     @Override
     public List<Account> listAllAccount() {
         return accountRepository.findAll();
+    }
+
+    @Override
+    public void deleteAccount(UUID account) {
+        accountRepository.deleteAccount();
+    }
+
+    @Override
+    public Account retriverById(UUID account) {
+        return accountRepository.findById(account);
     }
 }

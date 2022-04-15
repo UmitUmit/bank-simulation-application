@@ -1,11 +1,12 @@
 package com.cydeo.banksimulation.service.impl;
 
-import com.cydeo.banksimulation.entity.Account;
-import com.cydeo.banksimulation.entity.Transaction;
+
 import com.cydeo.banksimulation.enums.AccountType;
 import com.cydeo.banksimulation.exception.BadRequestException;
 import com.cydeo.banksimulation.exception.BalanceNotSufficientException;
 import com.cydeo.banksimulation.exception.UnderConstructionException;
+import com.cydeo.banksimulation.model.Account;
+import com.cydeo.banksimulation.model.Transaction;
 import com.cydeo.banksimulation.repository.AccountRepository;
 import com.cydeo.banksimulation.repository.TransactionRepository;
 import com.cydeo.banksimulation.service.TransactionService;
@@ -93,5 +94,10 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public List<Transaction> findAll() {
         return transactionRepository.findAll();
+    }
+
+    @Override
+    public List<Transaction> retrieveLastTransaction() {
+        return transactionRepository.retrieveLastTransactions();
     }
 }

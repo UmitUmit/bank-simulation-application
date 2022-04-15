@@ -1,7 +1,7 @@
 package com.cydeo.banksimulation.service;
 
-import com.cydeo.banksimulation.entity.Account;
-import com.cydeo.banksimulation.entity.Transaction;
+import com.cydeo.banksimulation.model.Account;
+import com.cydeo.banksimulation.model.Transaction;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,5 +13,6 @@ public interface TransactionService {
                              Account sender, Account receiver, String message);
 
     List<Transaction> findAll();
+    List<Transaction> retrieveLastTransaction();
 
 }

@@ -1,6 +1,5 @@
-package com.cydeo.banksimulation.entity;
+package com.cydeo.banksimulation.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -17,4 +16,5 @@ public class Transaction {
     private BigDecimal amount;
     private String message;
     private Date creationDate;
+
 }
